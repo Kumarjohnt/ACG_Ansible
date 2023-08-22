@@ -1,2 +1,2 @@
 # ACG_Ansible
-A Cloud Guru Ansible Learinging 
+A Cloud Guru Ansible Learning examples.
