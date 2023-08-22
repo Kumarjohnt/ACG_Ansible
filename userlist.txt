@@ -1,0 +1,7 @@
+#Please create the below users on all hosts in dbsystems
+# you will find a pregenerated key pair and an authorized key file for each user in keys
+
+# User acconts to create:
+
+consultant
+supervisor

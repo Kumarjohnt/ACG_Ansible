@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: deploy local net file
+    template: 
+      src: /home/ansible/templates/network.j2
+      dest: /home/ansible/templates/network.txt

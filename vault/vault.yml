@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  vars_files:
+    - /home/ansible/vault/secure
+  tasks:
+  - name: Output Message
+    shell: echo {{ message }} > /home/ansible/vault/deployed.txt

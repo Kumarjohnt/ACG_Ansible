@@ -1,0 +1,44 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: edit host file
+      lineinfile:
+        path: /etc/hosts
+        line: "ansible.7amigosfin.com 169.168.0.1"
+    - name: install bind-utils
+      package:
+        name: bind-utils
+        state: latest
+    - name: create audit user
+      user:
+        name: 7amigos_audit
+        state: present
+    - name: update motd
+      copy:
+        src: /home/ansible/motd
+        dest: /etc/motd
+    - name: update issue
+      copy:
+        src: /home/ansible/issue
+        dest: /etc/issue
+
+- hosts: network
+  become: yes
+  tasks:
+    - name: install netcat
+      yum:
+        name: nmap-ncat
+        state: latest
+    - name: create network user
+      user:
+        name: 7amigos_network
+        state: present
+
+- hosts: sysadmin
+  become: yes
+  tasks:
+    - name: copy tarball
+      copy: 
+        src: /home/ansible/scripts.tgz
+        dest: /mnt/storage

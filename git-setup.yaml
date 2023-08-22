@@ -1,0 +1,8 @@
+--- # install git on target host
+- hosts: kube-poc-uworker1 kube-poc-uworker2 kube-poc-uworker3
+  become: yes
+  tasks:
+  - name: install git
+    yum:
+      name: git
+      state: latest

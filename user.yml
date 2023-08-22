@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: yes
+  connection: local
+  tasks:
+    - name: create users
+      user:
+        name: "{{item}}"
+      with_items:
+        - praman
+        - prabha
+        - manan

@@ -1,0 +1,6 @@
+[database]
+kube-poc-uworker1
+
+[webservers]
+kube-poc-uworker2
+kube-poc-uworker3

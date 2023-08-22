@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: get file
+      block:
+        - get_url:
+            url: "http://kube-poc-uworker1/index.html"
+            dest: "/tmp/index_file"
+      rescue:
+        - debug: msg="The file doesn't exists!"
+      always:
+        - debug: msg="Play is completed!"

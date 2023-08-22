@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: install httpd
+      yum: name=httpd state=latest
+    - name: start and enable httpd
+      service: name=httpd state=started enabled=yes
+    - name: retrive website from repo
+      get_url: url=http://kube-poc-umaster1/website.tgz dest=/tmp/website.tgz
+    - name: install website
+      unarchive: remote_src=yes src=/tmp/website.tgz dest=/var/www/html

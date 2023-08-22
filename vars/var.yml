@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    inv_file: /home/ansible/vars/inv.txt
+  tasks:
+  - name: create file
+    file:
+      path: "{{ inv_file}}"
+      state: touch
+  - name: generate inventory
+    lineinfile:
+      path: "{{inv_file}}"
+      #line: "{{ groups['labservers'] }}"
+      line: "{{ groups['labservers']|join(' ') }}"

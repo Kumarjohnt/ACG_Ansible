@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: install role
+      command: ansible-galaxy install elastic.elasticsearch,7.8.1 -p /etc/ansible/roles

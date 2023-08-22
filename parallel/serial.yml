@@ -1,0 +1,17 @@
+---
+- hosts: labservers
+  become: yes
+  #serial: 10 ## this will run on 10 servers at time until all hosts are completed
+  #giving this in list format will tell ansible to rampup as per the list. first 
+  #it will run for 1 host and then 2 hosts and then on 50% hosts
+  #List format helps to takle issue easly instead of pushing on all nodes. 
+  serial:
+    - 1
+    - 2
+    - 50%
+  max_fail_percentage: 30 # its in percentages. helps to exit if more number of failures.
+  tasks:
+  - name: add host entry
+    lineinfile:
+      path: /etc/hosts
+      line: "kube-poc-uworker1 ansible.mylabserver.com"
